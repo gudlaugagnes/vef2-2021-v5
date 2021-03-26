@@ -6,7 +6,6 @@ import App from './App';
 
 import './index.css';
 
-// TODO setja upp router
 
 ReactDOM.render(
   <BrowserRouter>

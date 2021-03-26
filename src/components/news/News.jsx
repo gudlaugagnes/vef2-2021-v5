@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import s from './News.module.scss';
+//import s from './News.module.scss';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
@@ -26,6 +26,7 @@ export function News({ id, newsList }) {
       let json;
 
       const url = apiUrl`${id}`;
+      console.log('Þetta er urlið:' + url);
 
       try {
         const result = await fetch(url);
