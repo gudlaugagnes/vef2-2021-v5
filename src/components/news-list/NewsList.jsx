@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { NewsPage } from '../../pages/News';
 
 
-//import s from './NewsList.module.scss';
+
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -58,10 +58,8 @@ export function NewsList() {
   }
 
   const title = data.title;
-  console.log("title " + title);
 
   let news = data.items || [];
-  console.log("Þetta er news í newslist.jsx: " + news);
 
   
 

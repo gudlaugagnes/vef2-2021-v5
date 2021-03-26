@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from './NewsList.module.scss';
 
 NewsPage.propTypes = {
   title: PropTypes.string,
@@ -7,9 +8,8 @@ NewsPage.propTypes = {
 }
 
 export function NewsPage({title, news}) {
-  // TODO útfæra fréttasíðu
   return (
-    <section>
+    <section className={s.newsList}>
       <h1>{title}</h1>
       <ul>
       {news.length === 0 && (
@@ -19,7 +19,7 @@ export function NewsPage({title, news}) {
       { news.map((n, i) => {
     return(
       <div>
-        <a href={n.link} key={i} > {n.title} </a>
+        <a className={s.newsLink} href={n.link} key={i} > {n.title} </a>
       </div>
     );
     })}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Index } from '../../pages/Index'
+import { Index } from '../../pages/Index';
 
 //import s from './News.module.scss';
 
@@ -62,13 +62,12 @@ export function News() {
 
   let news = data || [];
 
-  console.log("er í News.jsx og þetta er news: " + news);
+  console.log("news.jsx  " + news);
 
   
 
   return (
     <Index
-      news={news}
     />
   );
 }
