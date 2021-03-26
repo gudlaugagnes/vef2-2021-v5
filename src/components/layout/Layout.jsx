@@ -3,7 +3,6 @@
 import s from './Layout.module.scss';
 
 export function Layout({ title, children }) {
-  // TODO setja upp layout fyrir vef
   return (
     <div className={s.layout}>
       <header className={s.layout__header}>

@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 
-import { News } from '../../components/news/News';
+import { NewsPage } from '../../pages/News';
+
+
 //import s from './NewsList.module.scss';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-NewsList.propTypes = {
-  title: PropTypes.string.isRequired,
-  news: PropTypes.string.isRequired,
-}
 
-export function NewsList({ title, news }) {
-  // TODO sækja yfirlit fréttaflokka
+export function NewsList() {
   let { id } = useParams();
 
   const [loading, setLoading] = useState(false);
@@ -28,14 +24,14 @@ export function NewsList({ title, news }) {
       let json;
 
       const url = `${apiUrl}${id}`;
+      console.log("urlið: " + url);
+    
 
       try {
         const result = await fetch(url);
-
         if (!result.ok) {
           throw new Error('result not ok');
         }
-
         json = await result.json();
       } catch (e) {
         setError('Gat ekki sótt gögn.');
@@ -61,17 +57,18 @@ export function NewsList({ title, news }) {
     );
   }
 
-  const newsTitle = data.title;
+  const title = data.title;
+  console.log("title " + title);
 
-  let newsList = data.item || [];
-  console.log("Þetta er data" + data);
+  let news = data.items || [];
+  console.log("Þetta er news í newslist.jsx: " + news);
 
   
 
   return (
-    <News
-      title={newsTitle}
-      news={newsList}
+    <NewsPage
+      title={title}
+      news={news}
     />
   );
 }

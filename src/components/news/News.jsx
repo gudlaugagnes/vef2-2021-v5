@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Index } from '../../pages/Index'
 
 //import s from './News.module.scss';
 
@@ -8,12 +9,10 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 
 News.propTypes = {
-  id: PropTypes.string.isRequired,
-  newsList: PropTypes.arrayOf(PropTypes.object),
+  news: PropTypes.arrayOf(PropTypes.object)
 }
 
-export function News({ id, newsList }) {
-  // TODO sækja fréttir fyrir flokk
+export function News() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(false);
@@ -25,8 +24,7 @@ export function News({ id, newsList }) {
 
       let json;
 
-      const url = apiUrl`${id}`;
-      console.log('Þetta er urlið:' + url);
+      const url = apiUrl;
 
       try {
         const result = await fetch(url);
@@ -46,7 +44,7 @@ export function News({ id, newsList }) {
       setData(json);
     }
     fetchData();
-  }, [id]);
+  }, []);
 
   if (error) {
     return (
@@ -60,15 +58,16 @@ export function News({ id, newsList }) {
     );
   }
 
-  const title = id.find((t) => t.type === id).label ;
+ 
 
-  let news = data.items.title || [];
+  let news = data || [];
+
+  console.log("er í News.jsx og þetta er news: " + news);
 
   
 
   return (
-    <News
-      title={title}
+    <Index
       news={news}
     />
   );
