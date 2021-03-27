@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { NewsList } from '../news-list/NewsList';
 
@@ -7,10 +6,6 @@ import s from './News.module.scss';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
-
-News.propTypes = {
-  news: PropTypes.arrayOf(PropTypes.object)
-}
 
 
 export function News() {
@@ -71,8 +66,8 @@ export function News() {
     <div className={s.news}>
       { news.map((n, i) => {
       return(
-        <div>
-        <NewsList key={i} title={n.id} id={n.id}/>
+        <div key={i}>
+        <NewsList allNews={false} title={n.id} id={n.id}/>
         </div>
       );
       })}
