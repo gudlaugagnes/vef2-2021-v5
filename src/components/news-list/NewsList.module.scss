@@ -1,25 +1,29 @@
   
 .newsList {
-  margin-bottom: 1rem;
+  margin: 0.5rem;
   padding: 1rem;
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(241, 240, 219);
   color: black;
   line-height: 25px;
-  width: 90%;
-
-  
-  
+  flex: 1 1 33%; 
 }
 
 .newsLink {
   color: black;
 }
 
-.newsLink_AllarFrettir {
+.newsLink_nav {
   font-weight: bold;
   text-decoration: none;
   line-height: 50px;
   color: black;
+  
 }
+
+.link {
+  vertical-align: bottom;
+  
+}
+

@@ -10,7 +10,7 @@ export function Layout({title, children }) {
       <main className={s.layout__main}>
         {children}
       </main>
-      <footer>
+      <footer className={s.layout__footer}>
         Fréttir frá <a href="https://www.ruv.is/">RÚV</a>
       </footer>
     </div>

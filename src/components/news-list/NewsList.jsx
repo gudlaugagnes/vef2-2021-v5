@@ -98,13 +98,13 @@ export function NewsList({ id , allNews }) {
         if (amount === news.length) {
           return (
             <div className={s.link}>
-              <NavLink to="/">Til baka</NavLink>
+              <NavLink className={s.newsLink_nav} to="/">Til baka</NavLink>
             </div>
           );
         } else {
           return (
             <div className={s.link}>
-              <NavLink to={`/${id}`}>Allar fréttir</NavLink>
+              <NavLink className={s.newsLink_nav} to={`/${id}`}>Allar fréttir</NavLink>
             </div>
           );
         }
