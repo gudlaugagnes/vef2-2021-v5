@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
-
-import { NewsPage } from '../../pages/News';
-
-
+//import { useParams } from 'react-router';
+import s from './NewsList.module.scss';
+import { NavLink} from 'react-router-dom';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 
-export function NewsList() {
-  let { id } = useParams();
+export function NewsList({ id }) {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,8 +21,7 @@ export function NewsList() {
       let json;
 
       const url = `${apiUrl}${id}`;
-      console.log("urlið: " + url);
-    
+
 
       try {
         const result = await fetch(url);
@@ -58,15 +54,24 @@ export function NewsList() {
   }
 
   const title = data.title;
-
   let news = data.items || [];
 
-  
-
   return (
-    <NewsPage
-      title={title}
-      news={news}
-    />
+    <section className={s.newsList}>
+      <h1>{title}</h1>
+      <ul >
+        {news.length === 0 && (
+          <li>Engar fréttir</li>
+        )}
+      </ul>
+      { news.slice(0,5).map((n, i) => {
+        return (
+          <div  key={i}>
+            <a className={s.newsLink} href={n.link}  > {n.title} </a>
+          </div>
+        );
+      })}
+      <NavLink className={s.newsLink_AllarFrettir} to={`/${id}`}>Allar fréttir</NavLink>
+    </section>
   );
 }

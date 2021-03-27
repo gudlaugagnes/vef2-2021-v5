@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Index } from '../../pages/Index';
 
-//import s from './News.module.scss';
+import { NewsList } from '../news-list/NewsList';
+
+import s from './News.module.scss';
 
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-
 News.propTypes = {
   news: PropTypes.arrayOf(PropTypes.object)
 }
+
 
 export function News() {
   const [loading, setLoading] = useState(false);
@@ -59,15 +60,22 @@ export function News() {
   }
 
  
-
-  let news = data || [];
-
-  console.log("news.jsx  " + news);
-
+  let news = [];
+  var i;
+  for(i=0; i<data.length; i++) {
+    news[i] = {id: data[i].id, title: data[i].title, url: data[i].url};
+  }
   
 
   return (
-    <Index
-    />
+    <div className={s.news}>
+      { news.map((n, i) => {
+      return(
+        <div>
+        <NewsList key={i} title={n.id} id={n.id}/>
+        </div>
+      );
+      })}
+    </div>
   );
 }

@@ -1,8 +1,7 @@
 
-// TODO sækja Sass
 import s from './Layout.module.scss';
 
-export function Layout({ title, children }) {
+export function Layout({title, children }) {
   return (
     <div className={s.layout}>
       <header className={s.layout__header}>
@@ -11,6 +10,9 @@ export function Layout({ title, children }) {
       <main className={s.layout__main}>
         {children}
       </main>
+      <footer>
+        Fréttir frá <a href="https://www.ruv.is/">RÚV</a>
+      </footer>
     </div>
   )
 }
